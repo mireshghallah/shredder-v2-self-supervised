@@ -1,7 +1,7 @@
 # Shredder-v2-self-supervised
 
 
-Code to Shredder: Learning Noise Distributions to Protect Inference Privacy, version2, using self-supervision (https://arxiv.org/abs/1905.118140). By FatemehSadat Mireshghallah (fmireshg@eng.ucsd.edu)
+Code to Shredder: Learning Noise Distributions to Protect Inference Privacy, version2, using self-supervision (https://arxiv.org/abs/1905.118140). By FatemehSadat Mireshghallah (fmireshg@eng.ucsd.edu), in PyTorch.
 
 In this repository you can find the code to shredder, and also the .npy files created through sampling, so you do not need to run everything from scratch, you can use the pre-existing ones.
 
@@ -12,9 +12,11 @@ Note1: The noise tensors are initialized using laplace distribution, and the tra
 
 Note2: The noise added here is very aggressive, which means it has an extremely low SNR (0.0002), so it takes for the network a while to adjust. You can test smaller noise (by changing the initialization scale from 20 to 3 for example), and have a faster convergence. Also, during the first epochs, the network is trying to create the clustered representations, so you do not see any improvement in the accuracy. 
 
-2. To sample from the trained noise and save activations for calculating the mutual information, run sample-for-mutual-info-alexnet.py. The results of this step are also provided, with the names: noisy-activation-4-laplace-MI.npy, original-activation-4-laplace-MI.npy,  and original-image-4-laplace-MI.npy which is over 100 mb (around 600mb) and we had to upload it to "https://ufile.io/jhz2d8r7"
 
-3. To see the Mutual Info, you should first have the ITE toolbox cloned (https://bitbucket.org/szzoli/ite-in-python/src/default/). Then, run notebook "mutual_info_ITE-laplace-04.ipynb"
+2. To run the sampling and test-time inference, and also save the representations needed fo calculating the mutual information, run "mutual_info_std20_self_lenet_nonsen.py". The results of this step are also provided, with the names: "noisy-activation-mutual_info-self-memory-uniform-std20-ep27.npy , original-activation-mutual_info-self-memory-uniform-std20-ep27.npy, original-image-mutual_info-self-memory-uniform-std20-ep27.npy ,original-labels-mutual_info-self-memory-uniform-std20-ep27.npy"
+
+
+3. To see the Mutual Info, you should first have the ITE toolbox cloned (https://bitbucket.org/szzoli/ite-in-python/src/default/). Then, run notebook "mutual_info_ITE--self-super-memory-std20-experimental.ipynb".
 
 
 Please do not hesitate to contact me in case of any issues
