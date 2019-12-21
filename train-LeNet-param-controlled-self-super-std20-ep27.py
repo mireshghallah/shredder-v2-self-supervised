@@ -284,7 +284,7 @@ def train_above_5(net, optimizer, epoch):
         #print(pos, "pos")
         #print(neg,"neg")
         #print ((pos - neg)/all , "norm")
-        loss = criterion(output, labels) + 1.01*(pos - neg)/all  #+ 0.01*sse
+        loss = criterion(output, labels) + 0.01*(pos - neg)  #+ 0.01*sse
         
         #if ()
         avg_loss += loss 
