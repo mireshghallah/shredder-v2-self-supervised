@@ -1,4 +1,4 @@
-# shredder-v2-self-supervised
+# Shredder-v2-self-supervised
 
 
 Code to Shredder: Learning Noise Distributions to Protect Inference Privacy, version2, using self-supervision (https://arxiv.org/abs/1905.118140). By FatemehSadat Mireshghallah (fmireshg@eng.ucsd.edu)
@@ -6,7 +6,11 @@ Code to Shredder: Learning Noise Distributions to Protect Inference Privacy, ver
 In this repository you can find the code to shredder, and also the .npy files created through sampling, so you do not need to run everything from scratch, you can use the pre-existing ones.
 
 # step by step guide:
-1. To do noise training, and save trained samples, run "alexnet-activation.py". This is a script generated from the more descriptive "alexnet-activation.ipynb" notebook. This generates a .npy file that has samples in it. Since this is a one time thing and takes a while, we have provided this named "activation-4-alexnet.npy" 
+1. To do noise training, and save trained samples, run "train-LeNet-param-controlled-self-super-std20-ep27.py". This is a script that generates two .npy files with multiplicative and additive noise tensors. Since this is a one time thing and takes a while, we have provided this named "self-super-std20-nonsen-27ep-noise-2.npy" and "self-super-std20-nonsen-27ep-weight-2.npy" which are the additive and multiplicative noises, respectively.
+
+Note1: The noise tensors are initialized using laplace distribution, and the training is monitored using SNR (we have used SNR as a proxy for mutual information, during training, the lower the SNR, the lower the mutual information and the higher the privacy).
+
+Note2: The noise added here is very aggressive, which means it has an extremely low SNR (0.0002), so it takes for the network a while to adjust. You can test smaller noise (by changing the initialization scale from 20 to 3 for example), and have a faster convergence. Also, during the first epochs, the network is trying to create the clustered representations, so you do not see any improvement in the accuracy. 
 
 2. To sample from the trained noise and save activations for calculating the mutual information, run sample-for-mutual-info-alexnet.py. The results of this step are also provided, with the names: noisy-activation-4-laplace-MI.npy, original-activation-4-laplace-MI.npy,  and original-image-4-laplace-MI.npy which is over 100 mb (around 600mb) and we had to upload it to "https://ufile.io/jhz2d8r7"
 
@@ -14,6 +18,29 @@ In this repository you can find the code to shredder, and also the .npy files cr
 
 
 Please do not hesitate to contact me in case of any issues
+
+# Citation
+If you used the code or the material in the paper, please cite us suing:
+
+
+@article{DBLP:journals/corr/abs-1905-11814,
+  author    = {Fatemehsadat Mireshghallah and
+               Mohammadkazem Taram and
+               Prakash Ramrakhyani and
+               Dean M. Tullsen and
+               Hadi Esmaeilzadeh},
+  title     = {Shredder: Learning Noise to Protect Privacy with Partial {DNN} Inference
+               on the Edge},
+  journal   = {CoRR},
+  volume    = {abs/1905.11814},
+  year      = {2019},
+  url       = {http://arxiv.org/abs/1905.11814},
+  archivePrefix = {arXiv},
+  eprint    = {1905.11814},
+  timestamp = {Mon, 03 Jun 2019 13:42:33 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1905-11814},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
 
 # License
 
