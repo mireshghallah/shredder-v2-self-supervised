@@ -1,7 +1,11 @@
 # Shredder-v2-self-supervised
 
 
-Code to Shredder: Learning Noise Distributions to Protect Inference Privacy, version2, using self-supervision (https://arxiv.org/abs/1905.118140). By FatemehSadat Mireshghallah (fmireshg@eng.ucsd.edu), in PyTorch.
+Code to Shredder: Learning Noise Distributions to Protect Inference Privacy, version2, using self-supervision. By FatemehSadat Mireshghallah (fmireshg@eng.ucsd.edu), in PyTorch.
+
+The paper pdf is available at: https://arxiv.org/pdf/1905.11814v2.pdf, note that it is version2 of the work, not the one that has appeared in ASPLOS20 (https://asplos-conference.org/home/programs/).
+
+This work appeared in the Thirty-fourth Annual Conference on Neural Information Processing Systems (NeurIPS19), Privacy in Machin Learning Workshop (https://priml-workshop.github.io/priml2019/).
 
 In this repository you can find the code to shredder, and also the .npy files created through sampling, so you do not need to run everything from scratch, you can use the pre-existing ones.
 
